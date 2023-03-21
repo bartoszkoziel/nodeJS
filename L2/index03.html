@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L2 Z4</title>
+</head>
+
+<body>
+    <input id="rangRed" type="range" min="0" max="255" name="red"><label id="lblRed">RED</label><br>
+    <input id="rangGreen" type="range" min="0" max="255" name="green"><label id="lblGreen">GREEN</label><br>
+    <input id="rangBlue" type="range" min="0" max="255" name="blue"><label id="lblBlue">BLUE</label><br>
+    <input id="rangAlpha" type="range" min="0" max="100" name="alpha"><label id="lblAlpha">ALPHA</label><br>
+
+
+    <button onclick="mySubmit()">WYŚLIJ</button>
+
+    <script>
+
+        let rangRed = document.getElementById("rangRed")
+        let rangGreen = document.getElementById("rangGreen")
+        let rangBlue = document.getElementById("rangBlue")
+        let rangAlpha = document.getElementById("rangAlpha")
+
+        rangRed.onchange = function () {
+            console.log("CACA");
+            document.getElementById("lblRed").innerHTML = "RED: " + rangRed.value
+        }
+
+        rangGreen.onchange = function () {
+            console.log("CACA");
+            document.getElementById("lblGreen").innerHTML = "GREEN: " + rangGreen.value
+        }
+
+        rangBlue.onchange = function () {
+            console.log("CACA");
+            document.getElementById("lblBlue").innerHTML = "BLUE: " + rangBlue.value
+        }
+
+        rangAlpha.onchange = function () {
+            console.log("CACA");
+            document.getElementById("lblAlpha").innerHTML = "ALPHA: " + rangAlpha.value
+        }
+
+        function mySubmit() {
+            const data = JSON.stringify({
+                red: rangRed.value,
+                green: rangGreen.value,
+                blue: rangBlue.value,
+                alpha: rangAlpha.value,
+            })
+
+            const options = {
+                method: "POST",
+                body: data
+            }
+
+            fetch("/hendleUpload", options)
+                .then(response => response.json())
+                .then(data => {
+                    alert(JSON.stringify(data))
+                })
+                .catch(error => console.log(error));
+        }
+    </script>
+</body>
+
+</html>
