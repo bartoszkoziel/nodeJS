@@ -1,0 +1,5 @@
+### GET - strona
+GET http://localhost:3000/ HTTP/1.1
+
+### POST - getall
+POST http://localhost:3000/getall HTTP/1.1
