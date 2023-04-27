@@ -1,0 +1,13 @@
+### GET - pobierz wszystkie dane
+GET http://localhost:3000/api/tasks HTTP/1.1
+
+
+### POST - nowe dane
+POST http://localhost:3000/api/tasks HTTP/1.1
+content-type: application/json
+
+{    
+  "name": "dr. mario",
+  "desc": "gra dr. mario na ap_kli",
+  "diff": "trudne"
+}
